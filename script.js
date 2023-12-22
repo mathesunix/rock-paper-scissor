@@ -1,4 +1,6 @@
-let playerSelection = prompt('Choose between rock, paper and scissor:');
+function getPlayerChoice() {
+    return prompt('Choose between rock, paper and scissor:');
+}
 
 function getComputerChoice() {
     let numberSymbol = Math.random();
@@ -50,4 +52,4 @@ function round(playerSelection, computerSelection) {
     }
 }
 
-console.log(round(playerSelection.toLowerCase(), getComputerChoice()));
+console.log(round(getPlayerChoice().toLowerCase(), getComputerChoice()));
