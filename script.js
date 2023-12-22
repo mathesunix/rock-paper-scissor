@@ -16,7 +16,7 @@ function getComputerChoice() {
     }
 }
 
-function round(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     if (computerSelection == 'rock') {
         if (playerSelection == 'scissor') {
             return 'You lose! Rock beats scissor';
@@ -26,7 +26,7 @@ function round(playerSelection, computerSelection) {
         }
         else {
             console.log("It's a tie!");
-            return round(getPlayerChoice().toLowerCase(), getComputerChoice());
+            return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
         }
     }
     else if (computerSelection == 'paper') {
@@ -35,7 +35,7 @@ function round(playerSelection, computerSelection) {
         }
         else if (playerSelection == 'paper') {
             console.log("It's a tie!");
-            return round(getPlayerChoice().toLowerCase(), getComputerChoice());
+            return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
         }
         else {
             return 'You lose! Paper beats rock';
@@ -44,7 +44,7 @@ function round(playerSelection, computerSelection) {
     else {
         if (playerSelection == 'scissor') {
             console.log("It's a tie!");
-            return round(getPlayerChoice().toLowerCase(), getComputerChoice());
+            return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
         }
         else if (playerSelection == 'paper') {
             return 'You lose! Scissor beats paper';
@@ -55,4 +55,31 @@ function round(playerSelection, computerSelection) {
     }
 }
 
-console.log(round(getPlayerChoice().toLowerCase(), getComputerChoice()));
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (i = 0; i < 5; i++) {
+        let result = playRound(getPlayerChoice().toLowerCase(), getComputerChoice()).slice(0, 8);
+        if (result == 'You lose') {
+            console.log(result + '!');
+            computerScore++;
+        }
+        else if (result == 'You win!') {
+            console.log(result);
+            playerScore++;
+        }
+        else {
+            i--;
+        }
+    }
+
+    if (playerScore > computerScore) {
+        return 'You win the best of 5!';
+    }
+    else {
+        return 'You lose the best of 5!';
+    }
+}
+
+console.log(game());
