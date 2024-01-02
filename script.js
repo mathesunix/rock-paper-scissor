@@ -1,6 +1,4 @@
-function getPlayerChoice() {
-    return prompt('Choose between rock, paper and scissor:');
-}
+let playerChoice;
 
 function getComputerChoice() {
     let numberSymbol = Math.random();
@@ -16,6 +14,19 @@ function getComputerChoice() {
     }
 }
 
+const rockButton = document.querySelector('.rock');
+rockButton.onclick = () => playRound('rock', getComputerChoice());
+
+const paperButton = document.querySelector('.paper');
+rockButton.onclick = () => playRound('paper', getComputerChoice());
+
+const scissorButton = document.querySelector('.scissor');
+rockButton.onclick = () => playRound('scissor', getComputerChoice());
+
+/* function getPlayerChoice() {
+    return prompt('Choose between rock, paper and scissor:');
+} */
+
 function playRound(playerSelection, computerSelection) {
     if (computerSelection == 'rock') {
         if (playerSelection == 'scissor') {
@@ -26,7 +37,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             console.log("It's a tie!");
-            return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
+            //return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
         }
     }
     else if (computerSelection == 'paper') {
@@ -35,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else if (playerSelection == 'paper') {
             console.log("It's a tie!");
-            return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
+            //return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
         }
         else {
             return 'You lose! Paper beats rock';
@@ -44,7 +55,7 @@ function playRound(playerSelection, computerSelection) {
     else {
         if (playerSelection == 'scissor') {
             console.log("It's a tie!");
-            return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
+            //return playRound(getPlayerChoice().toLowerCase(), getComputerChoice());
         }
         else if (playerSelection == 'paper') {
             return 'You lose! Scissor beats paper';
@@ -59,7 +70,7 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    for (i = 0; i < 5; i++) {
+    /* for (i = 0; i < 5; i++) {
         let result = playRound(getPlayerChoice().toLowerCase(), getComputerChoice()).slice(0, 8);
         if (result == 'You lose') {
             console.log(result + '!');
@@ -72,7 +83,7 @@ function game() {
         else {
             i--;
         }
-    }
+    } */
 
     if (playerScore > computerScore) {
         return 'You win the best of 5!';
@@ -82,4 +93,4 @@ function game() {
     }
 }
 
-console.log(game());
+//console.log(game());
